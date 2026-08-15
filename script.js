@@ -25,7 +25,6 @@ function windsCounter() {
   winds_ms %= 60000;
 
   let winds_seconds = winds_ms / 1000;
-  winds_ms %= 1000;
 
   winds_days = Math.floor(winds_days);
   winds_hours = Math.floor(winds_hours);
@@ -41,8 +40,7 @@ function windsCounter() {
   hours_counter.textContent = winds_hours === 1 ? "hour" : "hours";
   minutes_counter.textContent = winds_minutes === 1 ? "minute" : "minutes";
   seconds_counter.textContent = winds_seconds === 1 ? "second" : "seconds";
-
-  //   counter.textContent = `It has been ${winds_days} days, ${winds_hours} hours, ${winds_minutes} minutes and ${winds_seconds} seconds since A Dance with Dragons released. `;
 }
 
+windsCounter();
 setInterval(windsCounter, 1000);

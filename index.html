@@ -13,30 +13,34 @@
   </head>
   <body>
     <main>
-      <div class="title-row">
-        <div class="headline">Winter is Coming</div>
-        <div class="question">(or is it?)</div>
-      </div>
+      <section class="hero" aria-label="Winds of Winter countdown">
+        <div class="title-row">
+          <div class="headline">Winter is Coming</div>
+          <div class="question">(or is it?)</div>
+        </div>
 
-      <div id="counter">
-        <span class="open">It has been</span>
+        <div class="counter-lines">
+          <div id="counter">
+            <span class="open">It has been</span>
 
-        <span id="days"></span>
-        <span id="days_counter"></span>,
-        <span id="hours"></span>
-        <span id="hours_counter"></span>,
-        <span id="minutes"></span>
-        <span id="minutes_counter"></span>
-        and
-        <span id="seconds"></span>
-        <span id="seconds_counter"></span>
+            <span id="days"></span>
+            <span id="days_counter"></span>,
+            <span id="hours"></span>
+            <span id="hours_counter"></span>,
+            <span id="minutes"></span>
+            <span id="minutes_counter"></span>
+            and
+            <span id="seconds"></span>
+            <span id="seconds_counter"></span>
 
-        <span class="close">
-          since <strong>A Dance with Dragons</strong> was published.</span
-        >
-      </div>
+            <span class="close">
+              since <strong>A Dance with Dragons</strong> was published.</span
+            >
+          </div>
 
-      <p id="elapsed-years"></p>
+          <p id="elapsed-years"></p>
+        </div>
+      </section>
 
       <section class="book-history" aria-labelledby="book-history-title">
         <h2 id="book-history-title">A Song of Ice and Fire, so far</h2>
@@ -64,6 +68,12 @@
           </li>
         </ol>
       </section>
+
+      <footer class="site-footer">
+        <p>Cold winds are rising in the North.</p>
+        <p><time id="current-date"></time> · Winter is coming.</p>
+        <p>A <a href="https://abdulkareem.me">watcher</a> on the Wall.</p>
+      </footer>
 
     </main>
 

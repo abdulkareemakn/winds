@@ -36,22 +36,45 @@
   box-sizing: border-box;
 }
 
+::selection {
+  color: #222421;
+  background: #f0f0f0;
+}
+
 body {
   background-color: #222421;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   gap: 0.5rem;
 }
 
 main {
   width: 100%;
+  min-height: calc(100svh - 3rem);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.counter-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .title-row {
@@ -65,7 +88,7 @@ main {
 .headline {
   font-family: "Cinzel", serif;
   font-weight: 900;
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   color: #f0f0f0;
   letter-spacing: 0.05em;
 }
@@ -83,7 +106,7 @@ main {
   font-size: clamp(1.1rem, 2.2vw, 1.6rem);
   color: #dcdcdc;
   max-width: 100%;
-  line-height: 1.8;
+  line-height: 1.4;
   text-align: center;
 }
 
@@ -98,20 +121,19 @@ main {
 }
 
 #elapsed-years {
-  margin-top: 0.35rem;
   color: #b8b8b8;
   font-family: "Cardo", serif;
   font-size: clamp(1rem, 1.8vw, 1.3rem);
+  line-height: 1.4;
 }
 
 .book-history {
   width: min(100%, 620px);
-  margin-top: 5rem;
   text-align: left;
 }
 
 .book-history h2 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   color: #f0f0f0;
   font-family: "Cinzel", serif;
   font-size: clamp(1.15rem, 2vw, 1.5rem);
@@ -125,14 +147,14 @@ main {
 
 .timeline-item {
   position: relative;
-  min-height: 4rem;
-  padding: 0 0 1.5rem 2rem;
+  min-height: 0;
+  padding: 0 0 1rem 1.5rem;
   border-left: 1px solid #59666a;
 }
 
 .timeline-item::before {
   position: absolute;
-  top: 0.35rem;
+  top: 0.3rem;
   left: -0.32rem;
   width: 0.6rem;
   height: 0.6rem;
@@ -155,22 +177,61 @@ main {
 }
 
 .timeline-item h3 {
-  margin-top: 0.15rem;
+  margin-top: 0;
   color: #dcdcdc;
   font-family: "Cardo", serif;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 400;
 }
 
 .reading-label {
   display: inline-block;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   padding: 0.1rem 0.55rem;
   border: 1px solid #59666a;
   border-radius: 999px;
   color: #a8c5d1;
   font-family: "Cardo", serif;
   font-size: 0.85rem;
+}
+
+.site-footer {
+  width: min(100%, 620px);
+  margin-top: auto;
+  padding-top: 0;
+  color: #858985;
+  font-family: "Cardo", serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.site-footer p + p {
+  margin-top: 0.25rem;
+}
+
+.site-footer a {
+  color: #a8c5d1;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 1.5rem 1rem;
+  }
+
+  main {
+    min-height: 0;
+    gap: 2rem;
+  }
+
+  .site-footer {
+    margin-top: 0;
+  }
 }
 
 #days,

@@ -8,6 +8,13 @@ const hours_counter = document.querySelector("#hours_counter");
 const minutes_counter = document.querySelector("#minutes_counter");
 const seconds_counter = document.querySelector("#seconds_counter");
 const elapsedYears = document.querySelector("#elapsed-years");
+const currentDate = document.querySelector("#current-date");
+
+currentDate.dateTime = new Date().toISOString().slice(0, 7);
+currentDate.textContent = new Intl.DateTimeFormat("en", {
+  month: "long",
+  year: "numeric",
+}).format(new Date());
 
 function windsCounter() {
   const dance = new Date("2011-07-12");

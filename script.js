@@ -54,7 +54,7 @@ function windsCounter() {
   const elapsedMinutes = Math.floor((now - remainder) / 60000) % 60;
   const elapsedSeconds = Math.floor((now - remainder) / 1000) % 60;
 
-  elapsedYears.textContent = `That's ${years} years, ${elapsedDays} days, ${elapsedHours} hours, ${elapsedMinutes} minutes, and ${elapsedSeconds} seconds.`;
+  elapsedYears.textContent = `That's ${years} ${years === 1 ? "year" : "years"}, ${elapsedDays} ${elapsedDays === 1 ? "day" : "days"}, ${elapsedHours} ${elapsedHours === 1 ? "hour" : "hours"}, ${elapsedMinutes} ${elapsedMinutes === 1 ? "minute" : "minutes"}, and ${elapsedSeconds} ${elapsedSeconds === 1 ? "second" : "seconds"}.`;
 }
 
 windsCounter();

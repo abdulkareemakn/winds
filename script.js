@@ -10,7 +10,9 @@ const seconds_counter = document.querySelector("#seconds_counter");
 const elapsedYears = document.querySelector("#elapsed-years");
 
 function windsCounter() {
-  const dance = new Date("2011-07-12");
+  // Local midnight, so the countdown and the breakdown agree with the
+  // calendar date the book was published on.
+  const dance = new Date(2011, 6, 12);
 
   const now = new Date();
 

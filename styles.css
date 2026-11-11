@@ -146,7 +146,7 @@ main {
   font-weight: 700;
 }
 
-#elapsed-years {
+#elapsed-time {
   color: var(--text-muted);
   font-family: "Cardo", serif;
   font-size: clamp(1rem, 1.8vw, 1.3rem);

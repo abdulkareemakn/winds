@@ -287,25 +287,6 @@ main {
   width: 100%;
 }
 
-.nf-flake {
-  width: clamp(5rem, 12vw, 8.5rem);
-  height: auto;
-  color: #e8eef2;
-  opacity: 0.75;
-  filter: drop-shadow(0 0 6px rgb(168 197 209 / 0.35));
-  animation: nf-flake-drift 9s ease-in-out infinite;
-}
-
-@keyframes nf-flake-drift {
-  0%,
-  100% {
-    transform: rotate(-8deg) translateY(0);
-  }
-  50% {
-    transform: rotate(8deg) translateY(-0.5rem);
-  }
-}
-
 .nf-title {
   display: flex;
   flex-direction: column;
@@ -383,13 +364,7 @@ main {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .nf-flake {
-    animation: none;
-  }
-}
-
-/* 404 page — small screens and reduced motion. */
+/* 404 page — small screens. */
 
 @media (max-width: 700px) {
   .not-found {

@@ -340,10 +340,10 @@ main {
 .nf-btn {
   display: inline-block;
   padding: 0.6rem 1.35rem;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--text-primary);
   border-radius: 999px;
-  background: var(--accent);
-  color: var(--bg);
+  background: transparent;
+  color: var(--text-primary);
   font-family: "Cardo", serif;
   font-size: 1rem;
   text-decoration: none;
@@ -354,55 +354,7 @@ main {
 .nf-btn:hover,
 .nf-btn:focus-visible {
   transform: translateY(-2px);
-  opacity: 0.85;
-}
-
-.nf-btn-ghost {
-  background: transparent;
-  color: var(--accent);
-}
-
-/* The raven that crosses the sky. */
-
-.nf-raven-flight {
-  position: fixed;
-  top: 8vh;
-  left: 0;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateX(-20vw);
-}
-
-.nf-raven-flight img {
-  display: block;
-  width: 52px;
-  height: 52px;
-  filter: drop-shadow(0 2px 6px rgb(0 0 0 / 0.35));
-}
-
-.nf-raven-flight.is-flying {
-  animation: nf-fly-across 3.4s cubic-bezier(0.4, 0, 0.6, 1) forwards;
-}
-
-@keyframes nf-fly-across {
-  0% {
-    opacity: 0;
-    transform: translateX(-20vw) translateY(0) scaleX(1);
-  }
-  12% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(45vw) translateY(-3vh) scaleX(1);
-  }
-  88% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(115vw) translateY(2vh) scaleX(1);
-  }
+  opacity: 0.7;
 }
 
 @media (max-width: 700px) {
@@ -423,10 +375,6 @@ main {
 @media (prefers-reduced-motion: reduce) {
   .nf-flake {
     animation: none;
-  }
-
-  .nf-raven-flight.is-flying {
-    animation-duration: 0.01ms;
   }
 }
 

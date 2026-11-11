@@ -1,36 +1,5 @@
 /* 404 — gone with the wind */
 
-const ravenEl = document.querySelector("#raven-flight");
-const sendRavenEl = document.querySelector("#send-raven");
-const goBackEl = document.querySelector("#nf-go-back");
-
-/* A raven, sent on its way. */
-function sendRaven() {
-  if (!ravenEl) return;
-
-  ravenEl.classList.remove("is-flying");
-  void ravenEl.offsetWidth;
-  ravenEl.classList.add("is-flying");
-
-  window.setTimeout(() => {
-    ravenEl.classList.remove("is-flying");
-  }, 3600);
-}
-
-if (sendRavenEl) {
-  sendRavenEl.addEventListener("click", sendRaven);
-}
-
-if (goBackEl) {
-  goBackEl.addEventListener("click", () => {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.assign("/");
-    }
-  });
-}
-
 /*
  * The 404 page is served at the path the visitor asked for, so relative links
  * would point at the missing path instead of the site. Cloudflare Pages keeps

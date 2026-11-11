@@ -367,13 +367,47 @@ main {
   font-size: 1rem;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.18s ease, opacity 0.18s ease;
+  transition:
+    transform var(--duration-press) var(--ease-out),
+    border-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
+}
+
+.nf-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .nf-btn:hover,
 .nf-btn:focus-visible {
-  transform: translateY(-2px);
-  opacity: 0.7;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nf-btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.nf-btn:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-btn {
+    transition:
+      border-color var(--duration-hover) var(--ease-out),
+      color var(--duration-hover) var(--ease-out),
+      background-color var(--duration-hover) var(--ease-out);
+  }
+
+  .nf-btn:hover,
+  .nf-btn:focus-visible,
+  .nf-btn:active {
+    transform: none;
+  }
 }
 
 @media (max-width: 700px) {

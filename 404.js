@@ -1,11 +1,3 @@
-/* 404 — gone with the wind */
-
-/*
- * The 404 page is served at the path the visitor asked for, so relative links
- * would point at the missing path instead of the site. Cloudflare Pages keeps
- * the site root at "/", but probe anyway in case the site is served from a
- * subdirectory.
- */
 async function findHome() {
   const candidates = ["/", "../", "./", "../../", "../../../", "../../../../"];
   const marker = "Winds of Winter Countdown";
@@ -19,9 +11,7 @@ async function findHome() {
       if (html.includes(marker)) {
         return new URL(candidate, window.location.href).href;
       }
-    } catch {
-      /* Try the next candidate. */
-    }
+    } catch {}
   }
 
   return null;
@@ -34,31 +24,62 @@ if (homeLink) {
   });
 }
 
-/* Snow on the Wall. */
 const canvas = document.querySelector("#snow");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const darkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const flakeColors = darkScheme ? ["#eef5f8", "#8fc0d6"] : ["#9fb9c4", "#4d7f93"];
 
+function driftOf(flake) {
+  return Math.sin(flake.age * flake.sway) * flake.swayAmount;
+}
+
 function drawSnow(ctx, width, height, flakes) {
   ctx.clearRect(0, 0, width, height);
 
-  for (const flake of flakes) {
-    const drift = Math.sin(flake.age * flake.sway) * flake.swayAmount;
+  const groups = new Map();
 
-    ctx.globalAlpha = flake.opacity;
-    ctx.fillStyle = flake.color;
+  for (const flake of flakes) {
+    const alpha = Math.round(flake.opacity * 20) / 20;
+    const key = `${flake.color}|${alpha}`;
+
+    let group = groups.get(key);
+
+    if (!group) {
+      group = { color: flake.color, alpha, width: 0, flakes: [] };
+      groups.set(key, group);
+    }
+
+    group.flakes.push(flake);
+    group.width = Math.max(group.width, flake.radius * 0.6);
+  }
+
+  for (const group of groups.values()) {
+    ctx.fillStyle = group.color;
+    ctx.strokeStyle = group.color;
+
+    ctx.globalAlpha = group.alpha;
     ctx.beginPath();
-    ctx.arc(flake.x + drift, flake.y, flake.radius, 0, Math.PI * 2);
+
+    for (const flake of group.flakes) {
+      const x = flake.x + driftOf(flake);
+
+      ctx.moveTo(x + flake.radius, flake.y);
+      ctx.arc(x, flake.y, flake.radius, 0, Math.PI * 2);
+    }
+
     ctx.fill();
 
-    /* A faint streak behind each flake, as if the wind were pulling it. */
-    ctx.globalAlpha = flake.opacity * 0.35;
-    ctx.strokeStyle = flake.color;
-    ctx.lineWidth = flake.radius * 0.6;
+    ctx.globalAlpha = group.alpha * 0.35;
+    ctx.lineWidth = group.width;
     ctx.beginPath();
-    ctx.moveTo(flake.x + drift, flake.y);
-    ctx.lineTo(flake.x + drift - flake.speed * 3, flake.y - flake.speed * 0.4);
+
+    for (const flake of group.flakes) {
+      const x = flake.x + driftOf(flake);
+
+      ctx.moveTo(x, flake.y);
+      ctx.lineTo(x - flake.speed * 3, flake.y - flake.speed * 0.4);
+    }
+
     ctx.stroke();
   }
 
@@ -94,6 +115,7 @@ if (canvas && canvas.getContext) {
   let flakes = makeFlakes(width, height, Math.min(160, Math.round((width * height) / 12000)));
   let gust = 0;
   let lastTime = 0;
+  let resizeHandle = 0;
 
   function resize() {
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -105,10 +127,25 @@ if (canvas && canvas.getContext) {
     canvas.style.height = `${height}px`;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     flakes = makeFlakes(width, height, Math.min(160, Math.round((width * height) / 12000)));
+
+    if (reduceMotion) {
+      drawSnow(ctx, width, height, flakes);
+    }
+  }
+
+  function scheduleResize() {
+    if (resizeHandle) {
+      return;
+    }
+
+    resizeHandle = window.requestAnimationFrame(() => {
+      resizeHandle = 0;
+      resize();
+    });
   }
 
   resize();
-  window.addEventListener("resize", resize);
+  window.addEventListener("resize", scheduleResize);
 
   if (reduceMotion) {
     drawSnow(ctx, width, height, flakes);
@@ -117,7 +154,6 @@ if (canvas && canvas.getContext) {
       const delta = lastTime ? Math.min((time - lastTime) / 16.67, 3) : 1;
       lastTime = time;
 
-      /* The wind gusts, then eases off. */
       gust += (Math.random() - 0.48) * 0.5;
       gust = Math.max(-1.6, Math.min(2.6, gust));
 

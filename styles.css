@@ -290,8 +290,9 @@ main {
 .nf-flake {
   width: clamp(5rem, 12vw, 8.5rem);
   height: auto;
-  color: var(--accent);
-  opacity: 0.85;
+  color: #e8eef2;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px rgb(168 197 209 / 0.35));
   animation: nf-flake-drift 9s ease-in-out infinite;
 }
 
@@ -306,6 +307,10 @@ main {
 }
 
 .nf-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
   font-family: "Cinzel", serif;
   font-weight: 600;
   font-size: clamp(1.4rem, 3.4vw, 2.4rem);
@@ -313,19 +318,26 @@ main {
   color: var(--text-primary);
 }
 
-.nf-title-sub {
-  display: inline-block;
-  margin-top: 0.35rem;
-  font-family: "Cardo", serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 0.68em;
+.nf-title-lead {
+  font-size: 0.7em;
   color: var(--text-muted);
 }
 
 .nf-others {
+  display: block;
   color: var(--accent);
-  font-style: normal;
+  font-size: 1.15em;
+  letter-spacing: 0.06em;
+}
+
+.nf-title-sub {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: "Cardo", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.62em;
+  color: var(--text-muted);
 }
 
 .nf-actions {

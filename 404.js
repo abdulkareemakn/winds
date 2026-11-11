@@ -38,7 +38,7 @@ if (homeLink) {
 const canvas = document.querySelector("#snow");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const darkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const flakeColors = darkScheme ? ["#dfe9ef", "#a8c5d1"] : ["#8fa9b3", "#3a6b7c"];
+const flakeColors = darkScheme ? ["#eef5f8", "#8fc0d6"] : ["#9fb9c4", "#4d7f93"];
 
 function drawSnow(ctx, width, height, flakes) {
   ctx.clearRect(0, 0, width, height);

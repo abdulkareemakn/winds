@@ -40,6 +40,13 @@
   --text-dim: #999999;
   --accent: #a8c5d1;
   --border: #59666a;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-press: 160ms;
+  --duration-hover: 180ms;
+  --duration-enter: 250ms;
+  --duration-fade: 400ms;
 }
 
 @media (prefers-color-scheme: light) {

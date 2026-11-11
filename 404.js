@@ -1,61 +1,8 @@
-/* 404 — lost beyond the Wall */
+/* 404 — gone with the wind */
 
-const omens = [
-  "Even the ravens will not go that way.",
-  "The map says it was never there.",
-  "It was here. It was nowhere. It was gone.",
-  "The cold has taken its name.",
-  "No one has seen it since the last long night.",
-  "Somewhere, a maester is still writing it.",
-];
-
-const omenEl = document.querySelector("#nf-omen");
-const pathEl = document.querySelector("#nf-path");
-const timeEl = document.querySelector("#nf-time");
 const ravenEl = document.querySelector("#raven-flight");
 const sendRavenEl = document.querySelector("#send-raven");
-
-/* Where the page was last seen. */
-if (pathEl) {
-  const requested = window.location.pathname + window.location.search;
-  pathEl.textContent = requested === "/" ? "/" : requested;
-}
-
-if (timeEl) {
-  timeEl.textContent = new Date().toLocaleString(undefined, {
-    hour: "2-digit",
-    minute: "2-digit",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
-/* Rotating omens. */
-let omenIndex = -1;
-
-function showOmen() {
-  if (!omenEl) return;
-
-  omenIndex = (omenIndex + 1) % omens.length;
-
-  if (!omenEl.textContent) {
-    omenEl.textContent = omens[omenIndex];
-    return;
-  }
-
-  omenEl.classList.add("is-fading");
-
-  window.setTimeout(() => {
-    omenEl.textContent = omens[omenIndex];
-    omenEl.classList.remove("is-fading");
-  }, 450);
-}
-
-if (omenEl) {
-  showOmen();
-  window.setInterval(showOmen, 4200);
-}
+const goBackEl = document.querySelector("#nf-go-back");
 
 /* A raven, sent on its way. */
 function sendRaven() {
@@ -67,18 +14,21 @@ function sendRaven() {
 
   window.setTimeout(() => {
     ravenEl.classList.remove("is-flying");
-    if (omenEl) {
-      omenEl.classList.add("is-fading");
-      window.setTimeout(() => {
-        omenEl.textContent = "A raven has been sent. It will return with good news, or nothing at all.";
-        omenEl.classList.remove("is-fading");
-      }, 450);
-    }
   }, 3600);
 }
 
 if (sendRavenEl) {
   sendRavenEl.addEventListener("click", sendRaven);
+}
+
+if (goBackEl) {
+  goBackEl.addEventListener("click", () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.assign("/");
+    }
+  });
 }
 
 /*
@@ -118,7 +68,6 @@ if (homeLink) {
 /* Snow on the Wall. */
 const canvas = document.querySelector("#snow");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 const darkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const flakeColors = darkScheme ? ["#dfe9ef", "#a8c5d1"] : ["#8fa9b3", "#3a6b7c"];
 

@@ -279,43 +279,29 @@ main {
 
 .nf-hero {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.9rem;
   width: 100%;
 }
 
-.nf-code {
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  font-size: clamp(4.5rem, 18vw, 12rem);
-  line-height: 0.95;
-  letter-spacing: 0.08em;
-  background-image: linear-gradient(
-    100deg,
-    transparent 0%,
-    var(--text-dim) 22%,
-    var(--text-primary) 42%,
-    var(--accent) 52%,
-    var(--text-primary) 62%,
-    var(--text-dim) 78%,
-    transparent 100%
-  );
-  background-size: 260% 100%;
-  background-position: 130% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: nf-wind-drift 7s ease-in-out infinite;
+.nf-flake {
+  width: clamp(5rem, 12vw, 8.5rem);
+  height: auto;
+  color: var(--accent);
+  opacity: 0.85;
+  animation: nf-flake-drift 9s ease-in-out infinite;
 }
 
-@keyframes nf-wind-drift {
+@keyframes nf-flake-drift {
   0%,
   100% {
-    background-position: 130% 0;
+    transform: rotate(-8deg) translateY(0);
   }
   50% {
-    background-position: -30% 0;
+    transform: rotate(8deg) translateY(-0.5rem);
   }
 }
 
@@ -333,24 +319,6 @@ main {
   font-weight: 400;
   font-size: 0.72em;
   color: var(--text-muted);
-}
-
-.nf-title-sub em {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.nf-omen {
-  min-height: 1.8em;
-  font-family: "Cardo", serif;
-  font-style: italic;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--text-dim);
-  transition: opacity 0.45s ease;
-}
-
-.nf-omen.is-fading {
-  opacity: 0;
 }
 
 .nf-detail {
@@ -392,84 +360,6 @@ main {
 .nf-btn-ghost {
   background: transparent;
   color: var(--accent);
-}
-
-.nf-report {
-  width: min(100%, 620px);
-  padding: 1.25rem 1.5rem 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--bg) 82%, var(--text-primary) 18%);
-}
-
-.nf-report h2 {
-  margin-bottom: 0.9rem;
-  color: var(--text-primary);
-  font-family: "Cinzel", serif;
-  font-size: clamp(1.05rem, 1.9vw, 1.35rem);
-  font-weight: 600;
-  text-align: center;
-}
-
-.nf-report-list {
-  display: grid;
-  gap: 0.3rem;
-  margin-bottom: 1.15rem;
-  font-family: "Cardo", serif;
-  font-size: 0.95rem;
-}
-
-.nf-report-row {
-  display: flex;
-  gap: 0.6rem;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px dotted var(--border);
-  padding-bottom: 0.3rem;
-}
-
-.nf-report-row dt {
-  color: var(--text-dim);
-}
-
-.nf-report-row dd {
-  color: var(--text-body);
-  text-align: right;
-  word-break: break-word;
-}
-
-.nf-status {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.nf-manifest {
-  list-style: none;
-  display: grid;
-  gap: 0.35rem;
-  font-family: "Cardo", serif;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.nf-manifest-item {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-}
-
-.nf-mark {
-  color: var(--accent);
-  font-size: 0.85em;
-}
-
-.nf-manifest-item.is-missing {
-  color: var(--text-primary);
-  font-style: italic;
-}
-
-.nf-manifest-item.is-missing .nf-mark {
-  color: var(--text-dim);
 }
 
 /* The raven that crosses the sky. */
@@ -531,17 +421,12 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nf-code {
+  .nf-flake {
     animation: none;
-    background-position: 50% 0;
   }
 
   .nf-raven-flight.is-flying {
     animation-duration: 0.01ms;
-  }
-
-  .nf-omen {
-    transition: none;
   }
 }
 
@@ -550,19 +435,6 @@ main {
 @media (max-width: 700px) {
   .not-found {
     gap: 2rem;
-  }
-
-  .nf-report {
-    padding: 1.1rem 1.15rem 1.3rem;
-  }
-
-  .nf-report-row {
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-
-  .nf-report-row dd {
-    text-align: left;
   }
 }
 

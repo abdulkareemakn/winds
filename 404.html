@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex" />
     <meta
       name="description"
-      content="This page cannot be found. Just like The Winds of Winter."
+      content="This page is gone with the wind. It walked beyond the Wall, and no one has seen it since."
     />
 
     <link
@@ -25,62 +25,42 @@
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
-    <title>404 — Lost Beyond the Wall</title>
+    <title>404 — Gone with the Wind</title>
   </head>
   <body class="not-found-body">
     <canvas id="snow" aria-hidden="true"></canvas>
 
     <main class="not-found">
       <section class="nf-hero" aria-labelledby="nf-title">
-        <p class="nf-code" aria-hidden="true">404</p>
+        <svg class="nf-flake" viewBox="0 0 100 100" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path id="nf-arm" d="M50 50 V12 M50 24 l-7 7 M50 24 l7 7 M50 38 l-5 5 M50 38 l5 5" />
+            <use href="#nf-arm" transform="rotate(60 50 50)" />
+            <use href="#nf-arm" transform="rotate(120 50 50)" />
+            <use href="#nf-arm" transform="rotate(180 50 50)" />
+            <use href="#nf-arm" transform="rotate(240 50 50)" />
+            <use href="#nf-arm" transform="rotate(300 50 50)" />
+            <circle cx="50" cy="50" r="3.5" fill="currentColor" stroke="none" />
+          </g>
+        </svg>
+
         <p class="nf-sr">Error 404: page not found.</p>
 
         <h1 id="nf-title" class="nf-title">
-          This page cannot be found.<br />
-          <span class="nf-title-sub">Just like <em>The Winds of Winter</em>.</span>
+          This page is gone with the wind.<br />
+          <span class="nf-title-sub">It walked beyond the Wall, and no one has seen it since.</span>
         </h1>
 
-        <p class="nf-omen" id="nf-omen" aria-hidden="true"></p>
-
         <p class="nf-detail">
-          The trail ends here. Whatever you were looking for has wandered past the Wall, where
-          the cold takes names and pages never come back. The ravens have not reported in.
+          There is nothing here but cold and the long wait. Whatever you were looking for has
+          drifted off into the Long Night, where pages go to be forgotten.
         </p>
 
         <div class="nf-actions">
           <a class="nf-btn" id="nf-home" href="/">Return to the Wall</a>
+          <button class="nf-btn nf-btn-ghost" id="nf-go-back" type="button">Go back</button>
           <button class="nf-btn nf-btn-ghost" id="send-raven" type="button">Send a raven</button>
         </div>
-      </section>
-
-      <section class="nf-report" aria-labelledby="nf-report-title">
-        <h2 id="nf-report-title">Ranger's sighting report</h2>
-
-        <dl class="nf-report-list">
-          <div class="nf-report-row">
-            <dt>Last seen at</dt>
-            <dd id="nf-path">&mdash;</dd>
-          </div>
-          <div class="nf-report-row">
-            <dt>Reported</dt>
-            <dd id="nf-time">&mdash;</dd>
-          </div>
-          <div class="nf-report-row">
-            <dt>Status</dt>
-            <dd class="nf-status">Missing, presumed winterish</dd>
-          </div>
-        </dl>
-
-        <ol class="nf-manifest">
-          <li class="nf-manifest-item"><span class="nf-mark" aria-hidden="true">&#10003;</span> A Game of Thrones</li>
-          <li class="nf-manifest-item"><span class="nf-mark" aria-hidden="true">&#10003;</span> A Clash of Kings</li>
-          <li class="nf-manifest-item"><span class="nf-mark" aria-hidden="true">&#10003;</span> A Storm of Swords</li>
-          <li class="nf-manifest-item"><span class="nf-mark" aria-hidden="true">&#10003;</span> A Feast for Crows</li>
-          <li class="nf-manifest-item"><span class="nf-mark" aria-hidden="true">&#10003;</span> A Dance with Dragons</li>
-          <li class="nf-manifest-item is-missing">
-            <span class="nf-mark" aria-hidden="true">&mdash;</span> The Winds of Winter
-          </li>
-        </ol>
       </section>
 
       <footer class="site-footer">

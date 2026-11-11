@@ -245,6 +245,276 @@ main {
   text-decoration: underline;
 }
 
+/* ---------------------------------------------------------------- 404 page */
+
+.not-found-body {
+  overflow-x: hidden;
+}
+
+#snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.not-found {
+  position: relative;
+  z-index: 1;
+  gap: clamp(2rem, 6vh, 3.5rem);
+}
+
+.nf-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.nf-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.nf-code {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(4.5rem, 18vw, 12rem);
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  background-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    var(--text-dim) 22%,
+    var(--text-primary) 42%,
+    var(--accent) 52%,
+    var(--text-primary) 62%,
+    var(--text-dim) 78%,
+    transparent 100%
+  );
+  background-size: 260% 100%;
+  background-position: 130% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: nf-wind-drift 7s ease-in-out infinite;
+}
+
+@keyframes nf-wind-drift {
+  0%,
+  100% {
+    background-position: 130% 0;
+  }
+  50% {
+    background-position: -30% 0;
+  }
+}
+
+.nf-title {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.nf-title-sub {
+  font-family: "Cardo", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.72em;
+  color: var(--text-muted);
+}
+
+.nf-title-sub em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.nf-omen {
+  min-height: 1.8em;
+  font-family: "Cardo", serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-dim);
+  transition: opacity 0.45s ease;
+}
+
+.nf-omen.is-fading {
+  opacity: 0;
+}
+
+.nf-detail {
+  max-width: 46ch;
+  font-family: "Cardo", serif;
+  font-size: clamp(0.98rem, 1.8vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-body);
+}
+
+.nf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.35rem;
+}
+
+.nf-btn {
+  display: inline-block;
+  padding: 0.6rem 1.35rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: "Cardo", serif;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.nf-btn:hover,
+.nf-btn:focus-visible {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.nf-btn-ghost {
+  background: transparent;
+  color: var(--accent);
+}
+
+.nf-report {
+  width: min(100%, 620px);
+  padding: 1.25rem 1.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg) 82%, var(--text-primary) 18%);
+}
+
+.nf-report h2 {
+  margin-bottom: 0.9rem;
+  color: var(--text-primary);
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+.nf-report-list {
+  display: grid;
+  gap: 0.3rem;
+  margin-bottom: 1.15rem;
+  font-family: "Cardo", serif;
+  font-size: 0.95rem;
+}
+
+.nf-report-row {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dotted var(--border);
+  padding-bottom: 0.3rem;
+}
+
+.nf-report-row dt {
+  color: var(--text-dim);
+}
+
+.nf-report-row dd {
+  color: var(--text-body);
+  text-align: right;
+  word-break: break-word;
+}
+
+.nf-status {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.nf-manifest {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  font-family: "Cardo", serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.nf-manifest-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.nf-mark {
+  color: var(--accent);
+  font-size: 0.85em;
+}
+
+.nf-manifest-item.is-missing {
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.nf-manifest-item.is-missing .nf-mark {
+  color: var(--text-dim);
+}
+
+/* The raven that crosses the sky. */
+
+.nf-raven-flight {
+  position: fixed;
+  top: 8vh;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-20vw);
+}
+
+.nf-raven-flight img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 2px 6px rgb(0 0 0 / 0.35));
+}
+
+.nf-raven-flight.is-flying {
+  animation: nf-fly-across 3.4s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+@keyframes nf-fly-across {
+  0% {
+    opacity: 0;
+    transform: translateX(-20vw) translateY(0) scaleX(1);
+  }
+  12% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(45vw) translateY(-3vh) scaleX(1);
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(115vw) translateY(2vh) scaleX(1);
+  }
+}
+
 @media (max-width: 700px) {
   body {
     padding: 1.5rem 1rem;
@@ -257,6 +527,42 @@ main {
 
   .site-footer {
     margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-code {
+    animation: none;
+    background-position: 50% 0;
+  }
+
+  .nf-raven-flight.is-flying {
+    animation-duration: 0.01ms;
+  }
+
+  .nf-omen {
+    transition: none;
+  }
+}
+
+/* 404 page — small screens and reduced motion. */
+
+@media (max-width: 700px) {
+  .not-found {
+    gap: 2rem;
+  }
+
+  .nf-report {
+    padding: 1.1rem 1.15rem 1.3rem;
+  }
+
+  .nf-report-row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .nf-report-row dd {
+    text-align: left;
   }
 }
 

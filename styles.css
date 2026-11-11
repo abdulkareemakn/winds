@@ -30,6 +30,32 @@
   src: url("fonts/cinzel-variable.woff2") format("woff2");
 }
 
+:root {
+  color-scheme: dark;
+
+  --bg: #222421;
+  --text-primary: #f0f0f0;
+  --text-body: #dcdcdc;
+  --text-muted: #b8b8b8;
+  --text-dim: #999999;
+  --accent: #a8c5d1;
+  --border: #59666a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    --bg: #fffafa;
+    --text-primary: #222421;
+    --text-body: #2f322c;
+    --text-muted: #565a52;
+    --text-dim: #6e7268;
+    --accent: #3a6b7c;
+    --border: #d0d5cd;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -37,12 +63,12 @@
 }
 
 ::selection {
-  color: #222421;
-  background: #f0f0f0;
+  color: var(--bg);
+  background: var(--text-primary);
 }
 
 body {
-  background-color: #222421;
+  background-color: var(--bg);
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
@@ -89,7 +115,7 @@ main {
   font-family: "Cinzel", serif;
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  color: #f0f0f0;
+  color: var(--text-primary);
   letter-spacing: 0.05em;
 }
 
@@ -97,14 +123,14 @@ main {
   font-family: "Cardo", serif;
   font-style: italic;
   font-size: clamp(1.3rem, 3vw, 2rem);
-  color: #999999;
+  color: var(--text-dim);
 }
 
 #counter {
   width: 100%;
   font-family: "Cardo", serif;
   font-size: clamp(1.1rem, 2.2vw, 1.6rem);
-  color: #dcdcdc;
+  color: var(--text-body);
   max-width: 100%;
   line-height: 1.4;
   text-align: center;
@@ -112,16 +138,16 @@ main {
 
 #counter .open,
 #counter .close {
-  color: #b8b8b8;
+  color: var(--text-muted);
 }
 
 #counter strong {
-  color: #f0f0f0;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
 #elapsed-years {
-  color: #b8b8b8;
+  color: var(--text-muted);
   font-family: "Cardo", serif;
   font-size: clamp(1rem, 1.8vw, 1.3rem);
   line-height: 1.4;
@@ -134,7 +160,7 @@ main {
 
 .book-history h2 {
   margin-bottom: 0.75rem;
-  color: #f0f0f0;
+  color: var(--text-primary);
   font-family: "Cinzel", serif;
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-weight: 600;
@@ -149,7 +175,7 @@ main {
   position: relative;
   min-height: 0;
   padding: 0 0 1rem 1.5rem;
-  border-left: 1px solid #59666a;
+  border-left: 1px solid var(--border);
 }
 
 .timeline-item::before {
@@ -158,9 +184,9 @@ main {
   left: -0.32rem;
   width: 0.6rem;
   height: 0.6rem;
-  border: 2px solid #222421;
+  border: 2px solid var(--bg);
   border-radius: 50%;
-  background: #a8c5d1;
+  background: var(--accent);
   content: "";
 }
 
@@ -171,14 +197,14 @@ main {
 }
 
 .timeline-item time {
-  color: #999999;
+  color: var(--text-dim);
   font-family: "Cardo", serif;
   font-size: 0.95rem;
 }
 
 .timeline-item h3 {
   margin-top: 0;
-  color: #dcdcdc;
+  color: var(--text-body);
   font-family: "Cardo", serif;
   font-size: 1.05rem;
   font-weight: 400;
@@ -188,9 +214,9 @@ main {
   display: inline-block;
   margin-top: 0.25rem;
   padding: 0.1rem 0.55rem;
-  border: 1px solid #59666a;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  color: #a8c5d1;
+  color: var(--accent);
   font-family: "Cardo", serif;
   font-size: 0.85rem;
 }
@@ -199,7 +225,7 @@ main {
   width: min(100%, 620px);
   margin-top: auto;
   padding-top: 0;
-  color: #b8b8b8;
+  color: var(--text-muted);
   font-family: "Cardo", serif;
   font-size: 0.95rem;
   line-height: 1.8;
@@ -210,7 +236,7 @@ main {
 }
 
 .site-footer a {
-  color: #a8c5d1;
+  color: var(--accent);
   text-decoration: underline;
 }
 
@@ -240,7 +266,7 @@ main {
 #seconds {
   font-family: "Cinzel", serif;
   font-weight: 700;
-  color: #a8c5d1;
+  color: var(--accent);
   font-size: 1.15em;
 }
 
@@ -248,5 +274,5 @@ main {
 #hours_counter,
 #minutes_counter,
 #seconds_counter {
-  color: #dcdcdc;
+  color: var(--text-body);
 }

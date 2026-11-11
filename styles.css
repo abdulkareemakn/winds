@@ -153,6 +153,25 @@ main {
   font-weight: 700;
 }
 
+.digit-grid {
+  display: inline-flex;
+  vertical-align: baseline;
+}
+
+.digit {
+  flex: 0 0 1ch;
+  text-align: center;
+}
+
+.sr-only {
+  user-select: none;
+}
+
+.unit-s--hidden {
+  visibility: hidden;
+  user-select: none;
+}
+
 #elapsed-time {
   color: var(--text-muted);
   font-family: "Cardo", serif;
@@ -273,6 +292,7 @@ main {
   gap: clamp(2rem, 6vh, 3.5rem);
 }
 
+.sr-only,
 .nf-sr {
   position: absolute;
   width: 1px;
